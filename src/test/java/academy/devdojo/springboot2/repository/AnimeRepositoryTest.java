@@ -2,17 +2,15 @@ package academy.devdojo.springboot2.repository;
 
 import academy.devdojo.springboot2.domain.Anime;
 import academy.devdojo.springboot2.util.AnimeCreator;
+import jakarta.validation.ConstraintViolationException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import jakarta.validation.ConstraintViolationException;
 
 import java.util.List;
 import java.util.Optional;
-
-import static academy.devdojo.springboot2.util.AnimeCreator.createAnimeToBeSaved;
 
 @DataJpaTest
 @DisplayName("Tests for Anime Repository")
@@ -21,8 +19,8 @@ class AnimeRepositoryTest {
     private AnimeRepository animeRepository;
 
     @Test
-    @DisplayName("Save creates anime when Successful")
-    void save_CreatesAnime_WhenSuccessful() {
+    @DisplayName("Save persists anime when Successful")
+    void save_PersistAnime_WhenSuccessful() {
         Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
         Anime animeSaved = this.animeRepository.save(animeToBeSaved);
 
