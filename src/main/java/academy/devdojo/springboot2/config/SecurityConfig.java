@@ -37,7 +37,10 @@ public class SecurityConfig {
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((authz) -> authz.anyRequest().authenticated())
+                .authorizeHttpRequests((authz) -> authz
+                        .requestMatchers("/animes/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/animes/**").hasRole("USER")
+                        .anyRequest().authenticated())
                 .formLogin(withDefaults())
                 .httpBasic(withDefaults());
 
