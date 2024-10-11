@@ -27,7 +27,7 @@ public class DevDojoUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "The name can't be empty")
+    @NotBlank(message = "The user's name can't be empty")
     private String name;
 
     private String username;
