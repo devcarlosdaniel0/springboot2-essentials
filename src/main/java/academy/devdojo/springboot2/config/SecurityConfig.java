@@ -40,6 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/animes/admin/**").hasRole("ADMIN")
                         .requestMatchers("/animes/**").hasRole("USER")
+                        .requestMatchers("/actuator/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(withDefaults())
                 .httpBasic(withDefaults());
